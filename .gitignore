@@ -1,0 +1,37 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon?
+._*
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+env/
+venv/
+.ipynb_checkpoints/
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+*.out
+*.pid
+
+# IDE files
+.vscode/
+.idea/
+
+# Data and outputs
+data/raw/
+data/processed/
+models/
+*.pkl
+*.h5
+output/
+*.csv
+*.json
