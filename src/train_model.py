@@ -12,7 +12,7 @@ game_data = pd.read_csv('../data/game_data.csv')
 game_data = game_data.drop_duplicates()
 team_data = team_data.drop_duplicates()
 
-# check for duplicate columns after merging
+# merge columns
 merged_game_data = game_data.merge(
     team_data, left_on='TEAM_ID_HOME', right_on='TEAM_ID', suffixes=('', '_HOME')
 )
