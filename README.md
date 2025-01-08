@@ -37,6 +37,7 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 - **scikit-learn**: Machine learning library for training and evaluating the model.
 - **pandas**: Data manipulation library for handling team and game data.
 - **Jupyter Notebook**: For data exploration and model development.
+- **joblib**: Library for saving and loading trained machine learning models efficiently.
 
 ---
 
@@ -44,7 +45,7 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/nba-cup-prediction.git
+   git clone https://github.com/keviniannn/nba-predictions.git
    cd nba-cup-prediction
    ```
 
@@ -54,6 +55,9 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
    ```
 
 3. Ensure you have the necessary datasets:
+   ```bash
+   python3 data_generation.py
+   ```
    - **Team stats dataset**: `team_stats.csv`
    - **Game data dataset**: `game_data.csv`
 
