@@ -21,10 +21,6 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 
 ![NBA Bracket](/images/nba_cup.png)
 
-<p align="center">
-  <img src="images/bracket.png" alt="NBA Bracket" width="500">
-</p>
-
 ---
 
 ## Features
