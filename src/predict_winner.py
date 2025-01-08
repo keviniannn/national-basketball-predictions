@@ -39,7 +39,7 @@ def predict_winner(team1, team2, team_stats):
     prediction = model.predict(input_data)[0]
     return team1 if prediction == 1 else team2
 
-team1 = "Boston Celtics"
+team1 = "Utah Jazz"
 team2 = "Washington Wizards"
 try:
     winner = predict_winner(team1, team2, team_data)

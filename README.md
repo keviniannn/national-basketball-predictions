@@ -1,6 +1,6 @@
 # NBA Cup Prediction Model
 
-This project uses a machine learning model to predict the outcome of an NBA Cup bracket, simulating the entire tournament round by round and determining the ultimate champion.
+This project uses a machine learning model to predict the outcome of an NBA Cup bracket, simulating the tournament round by round and determining the ultimate champion.
 
 ## Table of Contents
 1. [Overview](#overview)
@@ -18,6 +18,12 @@ This project uses a machine learning model to predict the outcome of an NBA Cup 
 ## Overview
 
 The NBA Cup Prediction Model simulates an in-season tournament bracket for the NBA using historical and current team statistics. It predicts the outcome of each match using a machine learning model trained on previous game data, providing results for every round until the final champion is determined.
+
+![NBA Bracket](/images/nba_cup.png)
+
+<p align="center">
+  <img src="images/bracket.png" alt="NBA Bracket" width="500">
+</p>
 
 ---
 
