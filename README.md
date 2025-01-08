@@ -45,8 +45,8 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/keviniannn/nba-predictions.git
-   cd nba-cup-prediction
+   git clone https://github.com/keviniannn/national-basketball-predictions.git
+   cd national-basketball-predictions
    ```
 
 2. Install required Python packages:
