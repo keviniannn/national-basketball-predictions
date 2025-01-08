@@ -26,7 +26,6 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 - Predict outcomes of individual NBA matches based on team statistics.
 - Simulate entire tournament brackets recursively, filling out each round.
 - Provide round-by-round outputs for detailed analysis.
-- Easy-to-use interface with customizable input.
 
 ---
 
