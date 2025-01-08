@@ -87,14 +87,16 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 nba-cup-prediction/
 │
 ├── data/
-│   ├── team_data.csv           # Team statistics
-│   ├── game_data.csv           # Historical game data
+│   ├── game_data.csv           # Team statistics
+│   ├── team_data.csv           # Historical game data
 │
 ├── model/
 │   ├── nba_prediction_model.pkl  # Trained machine learning model
 │
 ├── src/
-│   ├── train_model.py          # Script to train the machine learning model
+│   ├── data_generation.py      # Script to generate NBA data using API
+│   ├── train_model.py          # Script train model
+│   ├── predict_winner.py       # Script predict a winner using model
 │   ├── simulate_bracket.py     # Script to simulate the tournament bracket
 │
 ├── notebooks/
