@@ -87,13 +87,13 @@ The NBA Cup Prediction Model simulates an in-season tournament bracket for the N
 nba-cup-prediction/
 │
 ├── data/
-│   ├── team_stats.csv          # Team statistics
+│   ├── team_data.csv           # Team statistics
 │   ├── game_data.csv           # Historical game data
 │
 ├── model/
 │   ├── nba_prediction_model.pkl  # Trained machine learning model
 │
-├── scripts/
+├── src/
 │   ├── train_model.py          # Script to train the machine learning model
 │   ├── simulate_bracket.py     # Script to simulate the tournament bracket
 │
@@ -110,20 +110,20 @@ nba-cup-prediction/
 ## Example Output
 
 ```plaintext
---- Round 1 ---
-Oklahoma City Thunder vs. Dallas Mavericks -> Oklahoma City Thunder wins
+--- Quarterfinals ---
+Oklahoma City Thunder vs. Dallas Mavericks -> Dallas Mavericks wins
 Houston Rockets vs. Golden State Warriors -> Houston Rockets wins
-Milwaukee Bucks vs. Orlando Magic -> Milwaukee Bucks wins
-New York Knicks vs. Atlanta Hawks -> Atlanta Hawks wins
+Milwaukee Bucks vs. Orlando Magic -> Orlando Magic wins
+New York Knicks vs. Atlanta Hawks -> New York Knicks wins
 
 --- Semifinals ---
-Oklahoma City Thunder vs. Houston Rockets -> Oklahoma City Thunder wins
-Milwaukee Bucks vs. Atlanta Hawks -> Milwaukee Bucks wins
+Dallas Mavericks vs. Houston Rockets -> Dallas Mavericks wins
+Orlando Magic vs. New York Knicks -> New York Knicks wins
 
 --- Final ---
-Oklahoma City Thunder vs. Milwaukee Bucks -> Milwaukee Bucks wins
+Dallas Mavericks vs. New York Knicks -> New York Knicks wins
 
-The predicted NBA Cup Champion is: Milwaukee Bucks
+The predicted NBA Cup Champion is: New York Knicks
 ```
 
 ---
