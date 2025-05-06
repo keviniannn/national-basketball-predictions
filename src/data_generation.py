@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from nba_api.stats.endpoints import leaguegamelog, leaguedashteamstats, playergamelog
 from nba_api.stats.static import players
@@ -51,7 +52,7 @@ def fetch_team_data(season):
     data.to_csv("../data/team_data.csv", index=False)
     print('team_data.csv saved')
 
-def fetch_player_data(player_name: str, season='2024-25'):
+def fetch_player_data(player_name: str, season='2024-25', force_refresh=False) -> str:
     """
     fetch individual nba player data for a given season and save to a csv
 
@@ -59,6 +60,13 @@ def fetch_player_data(player_name: str, season='2024-25'):
     :param player: str, in the form of an id (Nikola Jokić = '203999')
     :return: player full name
     """
+    file_safe_name = player_name.replace(" ", "_")
+    file_path = f"../data/{file_safe_name}_data.csv"
+
+    if os.path.exists(file_path) and not force_refresh:
+        print(f"using cached csv: {file_path}")
+        return file_safe_name
+    
     result = players.find_players_by_full_name(player_name)
 
     player = result[0]

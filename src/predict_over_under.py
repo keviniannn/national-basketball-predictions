@@ -2,7 +2,7 @@ import pandas as pd
 import joblib
 import os
 
-def predict_over_under(player_name: str, stat_expr: str, line: float, games: int = 5) -> float:
+def predict_over_under(player_name: str, stat_expr: str, line: float, games: int = 10) -> float:
     """
     predicts the probability that a player will go over a stat line in their next game
 
@@ -30,24 +30,27 @@ def predict_over_under(player_name: str, stat_expr: str, line: float, games: int
     recent_games = player_data.tail(games)
     if len(recent_games) < games:
         raise ValueError(f"Not enough recent games for {player_name} (need at least {games})")
-
-    # compute rolling average features
-    avg_features = {}
-    stat_parts = [s.strip() for s in stat_expr.split('+')]
-
+    
     # base features from last game
     last_game = recent_games.iloc[-1]
-    avg_features.update({
-        'MIN': last_game['MIN'],
-        'FGA': last_game['FGA'],
-        'FG3A': last_game['FG3A'],
-        'FTA': last_game['FTA'],
-        'REB': last_game['REB'],
-        'AST': last_game['AST'],
-        'TOV': last_game['TOV'],
-    })
+    base_stats = [
+        'MIN', 'FGA', 'FG3A', 'FTA', 'REB', 'AST', 'TOV',
+        'FGM', 'FG3M', 'FTM', 'FG_PCT', 'FG3_PCT', 'FT_PCT',
+        'OREB', 'DREB'
+    ]
+
+    avg_features = {stat: last_game[stat] for stat in base_stats}
 
     # rolling averages for each stat part
+    for stat in list(avg_features.keys()):
+        avg_features[f"{stat}_avg"] = recent_games[stat].mean()
+
+    ast = recent_games['AST'].mean()
+    tov = recent_games['TOV'].mean()
+    avg_features['AST_TOV_ratio_avg'] = ast / (tov + 1e-5)
+
+    # add rolling averages for components of stat_expr
+    stat_parts = [s.strip() for s in stat_expr.split('+')]
     for stat in stat_parts:
         avg_features[f"{stat}_avg"] = recent_games[stat].mean()
 
