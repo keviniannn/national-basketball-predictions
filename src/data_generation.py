@@ -52,7 +52,7 @@ def fetch_team_data(season):
     data.to_csv("../data/team_data.csv", index=False)
     print('team_data.csv saved')
 
-def fetch_player_data(player_name: str, season='2024-25', force_refresh=False) -> str:
+def fetch_player_data(player_name: str, seasons=['2024-25'], force_refresh=False) -> str:
     """
     fetch individual nba player data for a given season and save to a csv
 
@@ -67,25 +67,40 @@ def fetch_player_data(player_name: str, season='2024-25', force_refresh=False) -
         print(f"using cached csv: {file_path}")
         return file_safe_name
     
+    # find player by id
     result = players.find_players_by_full_name(player_name)
 
+    # id and name of first result
     player = result[0]
     player_id = player['id']
     full_name = player['full_name']
     file_safe_name = full_name.replace(" ", "_")
 
-    player_stats = playergamelog.PlayerGameLog(player_id=player_id, season=season)
-    data = player_stats.get_data_frames()[0]
+    # fetch data across seasons
+    all_data = []
 
-    data.to_csv(f"../data/{file_safe_name}_data.csv", index=False)
-    print(f'{file_safe_name}_data.csv saved')
+    for season in seasons:
+        print(f"fetching data for {full_name} - season {season}...")
+        try:
+            stats = playergamelog.PlayerGameLog(player_id=player_id, season=season)
+            df = stats.get_data_frames()[0]
+            df['SEASON'] = season
+            all_data.append(df)
+        except Exception as e:
+            print(f"failed to fetch data for {full_name} - {season}: {e}")
+
+    # combine and export
+    data = pd.concat(all_data, ignore_index=True)
+    data.to_csv(file_path, index=False)
+    print(f'{file_safe_name}_data.csv saved to {file_path}')
     
     return file_safe_name
 
 if __name__ == "__main__":
     season = '2024-25'
+    seasons = ['2024-25']
     player_name = 'lebron'
 
     fetch_game_data(season=season)
     fetch_team_data(season=season)
-    fetch_player_data(season=season, player_name=player_name)
+    fetch_player_data(seasons=seasons, player_name=player_name)

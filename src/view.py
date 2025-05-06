@@ -27,7 +27,7 @@ def run_prediction():
         return
 
     try:
-        full_name = fetch_player_data(player, force_refresh=refresh_var.get())
+        full_name = fetch_player_data(player, seasons=['2023-24', '2024-25'], force_refresh=refresh_var.get())
         generate_player_model(full_name, line=line, stat_expr=stat_expr, games=10, force_retrain=refresh_var.get())
         prob = predict_over_under(full_name, stat_expr=stat_expr, line=line, games=10)
         if prob is not None:
