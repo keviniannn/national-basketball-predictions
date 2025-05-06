@@ -7,10 +7,10 @@ model = joblib.load('../models/nba_prediction_model.pkl')
 
 # first-round matches with full team names
 first_round_matches = [
-    ("Oklahoma City Thunder", "Dallas Mavericks"),  # Match 1
-    ("Houston Rockets", "Golden State Warriors"),   # Match 2
-    ("Milwaukee Bucks", "Orlando Magic"),           # Match 3
-    ("New York Knicks", "Atlanta Hawks")            # Match 4
+    ("New York Knicks", "Boston Celtics"),  # Match 1
+    ("Cleveland Cavaliers", "Indiana Pacers"),   # Match 2
+    ("Oklahoma City Thunder", "Denver Nuggets"),           # Match 3
+    ("Minnesota Timberwolves", "Golden State Warriors")            # Match 4
 ]
 
 # recursive function to simulate the bracket

@@ -12,22 +12,6 @@ game_data = pd.read_csv('../data/game_data.csv')
 game_data = game_data.drop_duplicates()
 team_data = team_data.drop_duplicates()
 
-# merge columns
-merged_game_data = game_data.merge(
-    team_data, left_on='TEAM_ID_HOME', right_on='TEAM_ID', suffixes=('', '_HOME')
-)
-merged_game_data = merged_game_data.merge(
-    team_data, left_on='TEAM_ID_AWAY', right_on='TEAM_ID', suffixes=('', '_AWAY')
-)
-
-# if duplicate columns exist, drop them
-if merged_game_data.columns.duplicated().sum() > 0:
-    merged_game_data = merged_game_data.loc[:, ~merged_game_data.columns.duplicated()]
-
-# remove duplicate rows from datasets
-game_data = game_data.drop_duplicates()
-team_data = team_data.drop_duplicates()
-
 # merge team stats with game data
 game_data = game_data.merge(team_data, left_on='TEAM_ID_HOME', right_on='TEAM_ID', suffixes=('', '_HOME'))
 game_data = game_data.merge(team_data, left_on='TEAM_ID_AWAY', right_on='TEAM_ID', suffixes=('', '_AWAY'))
